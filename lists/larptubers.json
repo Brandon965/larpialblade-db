@@ -9,9 +9,7 @@
       "subs": 92600,
       "views": 1292819,
       "videos": 29
-    },
-    "tiktok": "tiktok.com/@larpiplier",
-    "instagram": "instagram.com/larpiplier"
+    }
   },
   {
     "id": 2,
@@ -23,8 +21,19 @@
       "subs": 25300,
       "views": 239178,
       "videos": 6
-    },
-    "tiktok": "",
-    "instagram": ""
+    }
+  },
+  {
+  "id": 3,
+  "date": "2026-06-06",
+  "name": "L4rPLess",
+  "icon": "https://yt3.ggpht.com/Uefub_O3-yAfkxx0_ZRL4qLe17LqbrUTC-Xe4TxHPveMerrdiVf3McCw1BShrR_JJ6FTPQKk=s800-c-k-c0x00ffffff-no-rj",
+   "youtube": {
+    "url": "https://youtube.com/@L4rPLess69",
+    "description": "hi! subscribe for funny moments and cool larps! :)",
+    "subs": 6440,
+    "views": 45635,
+    "videos": 1
   }
+}
 ]

@@ -5,7 +5,7 @@
   "banner": "https://yt3.googleusercontent.com/wQOXHvwb10eE2i-p0gLGkZXHBti0hjjRVoDRsvVysVvXvonD941ifkBLmeW4q7XanlUIa198=w1707-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj",
   "date": "2026-06-07",
   "youtube": {
-    "url": "https://youtube.com/ExlarpingTNT",
+    "url": "https://youtube.com/@ExlarpingTNT",
     "description": "Funny Minecraft videos!",
     "subs": 213,
     "views": 28,
@@ -14,5 +14,10 @@
   "tiktok": "",
   "instagram": "",
   "discord": "",
-  "original": "ExplodingTNT"
+  "original": "ExplodingTNT",
+  "latestvideo": {
+    "thumbnail": "https://i.ytimg.com/vi/w-aNN8cu2i8/hqdefault.jpg",
+    "link": "https://www.youtube.com/watch?v=w-aNN8cu2i8",
+    "title": "If Minecraft Was Owned By LARPERS"
+  }
 }

@@ -29,10 +29,7 @@ async function getChannel(handle) {
 
 for (const e of users) {
   const f = JSON.parse(await file(`users/${e}`).text());
-  console.log(f.youtube.url.split('@')[1])
   const r = await getChannel(f.youtube.url.split('@')[1]);
-
-  console.log(r);
 
   if (f.icon != r.icon) {
     f.icon = r.icon;

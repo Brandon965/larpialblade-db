@@ -53,4 +53,4 @@ for (const e of users) {
   writeFileSync(`users/${e}`, JSON.stringify(f))
 }
 
-writeFileSync('lists/larptubers.json', JSON.stringify(larpList))
+writeFileSync('lists/larptubers.json', JSON.stringify(tuberList))

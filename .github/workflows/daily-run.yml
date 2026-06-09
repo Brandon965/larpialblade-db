@@ -18,10 +18,13 @@ jobs:
         with:
           node-version: 20
 
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+
       - name: Install dependencies
-        run: npm install
+        run: bun install
 
       - name: Run script
         env:
           YOUTUBE_API: ${{ secrets.YOUTUBE_API }}
-        run: npm run scripts/updateTuberData.js
+        run: bun run scripts/updateTuberData.js

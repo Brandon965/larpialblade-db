@@ -13,7 +13,7 @@ async function getChannel(handle) {
   );
 
   const channelData = await channelRes.json();
-  const channel = channelData?.items[0];
+  const channel = channelData.items[0];
 
   return {
     icon: channel.snippet.thumbnails.high.url,

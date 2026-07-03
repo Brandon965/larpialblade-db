@@ -2,20 +2,29 @@ import { file } from "bun";
 import { readdirSync, writeFileSync } from "node:fs";
 
 const users = readdirSync("./users");
-const tuberList = []
+const tuberList = [];
 
 const API_KEY = process.env.YOUTUBE_API;
 
-
 async function getChannel(handle) {
   const channelRes = await fetch(
-    `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&forHandle=${handle}&key=${API_KEY}`,
+    `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics,contentDetails&forHandle=${handle}&key=${API_KEY}`,
   );
 
   const channelData = await channelRes.json();
-  const channelItems = channelData.items
+  const channelItems = channelData.items;
   if (!channelItems) return undefined;
   const channel = channelItems?.[0];
+
+  const uploadsPlaylistId = channel?.contentDetails.relatedPlaylists.uploads;
+
+  const playlistRes = await (
+    await fetch(
+      `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsPlaylistId}&maxResults=1&key=${API_KEY}`,
+    )
+  ).json();
+
+  const latest = playlistRes.items[0];
 
   return {
     icon: channel.snippet.thumbnails.high.url,
@@ -26,13 +35,19 @@ async function getChannel(handle) {
       views: Number(channel.statistics.viewCount),
       videos: Number(channel.statistics.videoCount),
     },
+    latestvideo: {
+      thumbnail: latest.snippet.thumbnails.high.url,
+      link: `https://www.youtube.com/watch?v=${latest.snippet.resourceId.videoId}`,
+      title: latest.snippet.title,
+    },
   };
 }
 
 for (const e of users) {
   const f = JSON.parse(await file(`users/${e}`).text());
-  const r = await getChannel(f.youtube.url.split('@')[1]);
+  const r = await getChannel(f.youtube.url.split("@")[1]);
   if (!r) continue;
+  console.log(r)
 
   if (f.icon != r.icon) {
     f.icon = r.icon;
@@ -50,10 +65,13 @@ for (const e of users) {
   if (f.youtube.videos != r.youtube.videos) {
     f.youtube.videos = r.youtube.videos;
   }
+  if (f.latestvideo != r.latestvideo) {
+    f.latestvideo = r.latestvideo;
+  }
 
   tuberList.push(f);
-  
-  writeFileSync(`users/${e}`, JSON.stringify(f))
+
+  writeFileSync(`users/${e}`, JSON.stringify(f));
 }
 
-writeFileSync('lists/larptubers.json', JSON.stringify(tuberList))
+writeFileSync("lists/larptubers.json", JSON.stringify(tuberList));

@@ -14,6 +14,7 @@ async function getChannel(handle) {
 
   const channelData = await channelRes.json();
   if (!channelData) return;
+  if (!channelData?.items) return;
   const channel = channelData?.items[0];
   if (!channel) return;
 
